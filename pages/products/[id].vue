@@ -1,23 +1,15 @@
 <template>
   <div>
-    <h1 class="text-teal-500">Produto {{ id }}</h1>
+    <h1>{{ product.title }}</h1>
+    <p>{{ product.description }}</p>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { getProductById } from "~/api/products";
 
-export default defineComponent({
-  setup () {
-    const { id } = useRoute().params;
-
-    return {
-      id
-    }
-  }
-})
+const { id } = useRoute().params;
+const { product } = await getProductById(id);
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
