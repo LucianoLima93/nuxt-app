@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   typescript: {
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/eslint-module",
     "@nuxt/image",
+    "nuxt-icon",
   ],
   googleFonts: {
     families: {

@@ -1,5 +1,5 @@
 const getAllProducts = async () => {
-  const { data, error } = await useFetch<IProduct>(
+  const { data, error } = await useFetch<IProduct[]>(
     "https://fakestoreapi.com/products",
   );
   return {
@@ -21,4 +21,14 @@ const getProductById = async (id: string | string[]) => {
   };
 };
 
-export { getAllProducts, getProductById };
+const getAllCategories = async () => {
+  const { data, error } = await useFetch<IProduct[]>(
+    "https://fakestoreapi.com/products/categories",
+  );
+  return {
+    categories: data.value,
+    error,
+  };
+};
+
+export { getAllProducts, getProductById, getAllCategories };

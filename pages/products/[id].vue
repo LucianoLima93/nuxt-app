@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1>{{ product.title }}</h1>
-    <p>{{ product.description }}</p>
+    <NuxtImg class="w-80 h-80 object-contain p-2" :src="product?.image" :alt="product?.title" />
+    <h1>{{ product?.title }}</h1>
+    <p>{{ product?.description }}</p>
   </div>
 </template>
 
