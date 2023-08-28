@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 col-span-1 w-full">
+  <div class="px-4 col-span-2 w-full">
     <h2 class="text-xl font-semibold my-4">Filtros</h2>
     <form id="search" class="flex flex-col gap-8">
       <div class="flex flex-col w-fit">
@@ -36,7 +36,7 @@ import { getAllCategories } from "~/api/products";
 const store = useProductStore();
 
 const { categories } = await getAllCategories();
-const selected = ref("");
+const selected = ref(store.selectedCategory);
 </script>
 
 <style scoped></style>

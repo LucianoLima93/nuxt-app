@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-9 flex flex-wrap gap-4 justify-around items-end">
+  <div class="col-span-8 flex flex-wrap gap-4 justify-around items-end mt-4">
     <div
       v-for="(product, i) in products"
       :key="i"
@@ -20,14 +20,9 @@
             {{ product.description }}
           </p>
           <div class="w-full flex flex-col justify-start py-2 gap-1">
-            <span class="text-lg font-bold"
-              >R${{
-                product.price.toLocaleString("pt-br", {
-                  style: "decimal",
-                  minimumFractionDigits: 2,
-                })
-              }}</span
-            >
+            <span class="text-lg font-bold">{{
+              formatterPriceToBRL(product.price)
+            }}</span>
             <Rating :rating="product.rating" />
           </div>
         </div>
@@ -37,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { formatterPriceToBRL } from "~/utils/formatters";
 defineProps({
   products: {
     type: Array as PropType<IProduct[]>,

@@ -1,6 +1,6 @@
 <template>
   <header
-    class="w-full flex justify-between items-center px-8 py-4 bg-gray-800"
+    class="w-full flex justify-between items-center px-8 py-4 bg-gray-800 sticky top-0 z-10"
   >
     <nav>
       <ul class="flex text-lg gap-4">
