@@ -1,30 +1,29 @@
 <template>
-  <div class="flex gap-2 items-center">
+  <div v-if="rating.count > 0" class="flex gap-1 items-baseline">
+    <span class="text-sm">{{ rating.rate }}</span>
     <span v-for="(star, idx) in arrayStars" :key="idx">
-      <Icon
-        :name="
-          star === 'star'
-            ? 'ic:baseline-star-rate'
-            : star === 'star_half'
-            ? 'ic:baseline-star-half'
-            : 'ic:baseline-star-border'
-        "
-        class="text-yellow-500"
-      />
+      <Icon :name="star" class="text-yellow-500" />
     </span>
-    <span class="text-sm text-purple-500">{{ count }} {{ count > 1 ? ' avaliações de clientes' : 'avaliação de cliente' }}</span>
+    <span class="text-sm text-purple-800"
+      >{{ rating.count }}
+      {{
+        rating.count > 1 ? " avaliações de clientes" : "avaliação de cliente"
+      }}</span
+    >
   </div>
 </template>
 
 <script setup lang="ts">
-const { rate, count } = defineProps({
-  rate: {
-    type: Number,
+import { type PropType } from "vue";
+
+const { rating } = defineProps({
+  rating: {
+    type: Object as PropType<IRating>,
     required: true,
-  },
-  count: {
-    type: Number,
-    required: true,
+    default: () => ({
+      rate: 0,
+      count: 0,
+    }),
   },
 });
 
@@ -32,18 +31,20 @@ const verifyQuantityOfStarsToFillByRateValue = (
   rate: number,
 ): Array<string> => {
   const halfStar: boolean = rate < Math.round(rate);
-  return new Array(5).fill('star').map((_, index) => {
+  return new Array(5).fill("star").map((_, index) => {
     if (index < Math.floor(rate)) {
-      return "star";
+      return "ic:baseline-star-rate";
     } else if (index === Math.floor(rate) && halfStar) {
-      return "star_half";
+      return "ic:baseline-star-half";
     } else {
-      return "star_border";
+      return "ic:baseline-star-border";
     }
   });
 };
 
-const arrayStars = reactive(verifyQuantityOfStarsToFillByRateValue(rate));
+const arrayStars = reactive(
+  verifyQuantityOfStarsToFillByRateValue(rating.rate),
+);
 </script>
 
 <style scoped></style>

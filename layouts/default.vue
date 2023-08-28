@@ -1,31 +1,10 @@
 <template>
-  <div>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <NuxtLink to="/">Home</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/products">Produtos</NuxtLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div>
-      <slot />
-    </div>
-  </div>
+  <main class="bg-purple-50/50">
+    <Header />
+    <slot />
+  </main>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  setup() {
-    return {};
-  },
-});
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>
